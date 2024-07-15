@@ -1,0 +1,269 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Container */
+.hamster-kombat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 400px; /* Maximum width */
+    margin: 0 auto; /* Center on the screen */
+    border: 1px solid #333; /* Border for visual clarity */
+    background: #333;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between; /* Space items evenly */
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+
+.profile-img {
+    width: 50px; /* Smaller profile image */
+    height: 50px; /* Smaller profile image */
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.profit {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.profit h1{
+    border-left: 1px solid #eee;
+}
+
+.profit img{
+    margin-right: 5px;
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    box-shadow:  0px 0  14px yellow;
+}
+
+.tasks-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and heading */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.number-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 30px;
+    animation: fly-up 2s ease-out forwards;
+}
+
+@keyframes fly-up {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 70%) translateY(50px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(-50px);
+    }
+}
+
+
+.closed-icon {
+    width: 35px; /* Set a fixed size for the icon */
+    height: 35px;
+}
+
+.tasks {
+    display: flex;
+    justify-content: space-around; /* Space tasks evenly */
+    gap: 10px; /* Space between tasks */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    width: calc(33.33% - 20px); /* Calculate width for 3 columns with spacing */
+    text-align: center;
+    font-size: 13px;
+}
+.task span{
+    color: #939292;
+}
+.task-icon {
+    margin-bottom: 10px;
+}
+
+
+.balance-container {
+    display: flex;
+    align-items: center;
+}
+
+.balance {
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-right: 10px; /* Add some space between balance and icon */
+}
+
+.balance-icon {
+    width: 20px; /* Size for the dollar icon */
+    height: 20px;
+}
+.avatar{
+    border-radius: 50%;
+    border: 8px solid red;
+    background: linear-gradient(rgb(244, 70, 70), rgb(246, 246, 66), rgb(246, 185, 72));
+}
+.avatar img {
+    width: 250px; /* Smaller avatar image */
+    height: 230px; /* Smaller avatar image */
+    border-radius: 50%;
+
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 13px;
+    box-shadow:  0px 0  220px rgb(254, 64, 16);
+    z-index: 2;
+
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-item img {
+    width: 20px; /* Smaller size for footer icons */
+    height: 20px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.footer-icon {
+    margin-bottom: 5px;
+}
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    .hamster-kombat {
+        max-width: 100%; /* Full width on smaller screens */
+        border: none; /* Remove border on smaller screens */
+    }
+
+    .header {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 40px; /* Smaller profile image */
+        height: 40px; /* Smaller profile image */
+    }
+
+    .tasks-header {
+        flex-direction: column; /* Stack icon and heading vertically */
+        align-items: center;
+    }
+
+    .tasks {
+        flex-direction: column; /* Stack tasks vertically */
+        align-items: center; /* Center tasks horizontally */
+        gap: 10px; /* Space between tasks */
+    }
+
+    .task {
+        width: 80%; /* Full width task boxes */
+        margin-bottom: 10px;
+    }
+
+    .balance {
+        font-size: 14px; /* Smaller balance font size */
+    }
+
+    .avatar img {
+        width: 60px; /* Smaller avatar image */
+        height: 60px; /* Smaller avatar image */
+    }
+
+    .footer {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .footer-item {
+        border-right: none; /* Remove right border */
+        border-bottom: 1px solid #444; /* Add bottom border */
+        width: 100%;
+    }
+
+    .footer-item:last-child {
+        border-bottom: none; /* Remove bottom border from last item */
+    }
+}
