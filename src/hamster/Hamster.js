@@ -7,8 +7,8 @@ import lion from "../assets/hmas.jpg";
 import coin from "../assets/dollar.png";
 import sett from "../assets/settings.png";
 import bnc from "../assets/coin.png";
-import mine from "../assets/pickaxe.png";
-import friend from "../assets/friends.png";
+import mine from "../assets/bitcoin.png";
+import friend from "../assets/friends s.png";
 import earn from "../assets/earnings.png";
 import ton from "../assets/currency.png";
 import { useTelegram } from "../hook/Web";
@@ -29,6 +29,7 @@ const Hamster = () => {
         const numTouches = e.touches.length;
         increment(count, setCount, numTouches);
     };
+
     const [currentProfit, setCurrentProfit] = useState(1.31);
     const [previousProfit, setPreviousProfit] = useState(1.0);
     const [balance, setBalance] = useState(21159780);
@@ -52,6 +53,38 @@ const Hamster = () => {
             setNumbers(prevNumbers => prevNumbers.filter(number => number.id !== newNumber.id));
         }, 2000); // Remove number after 2 seconds
     };
+
+    // Time state
+    const [taskTimes, setTaskTimes] = useState({
+        task1: 18 * 60 * 60 + 59 * 60, // 18:59 in seconds
+        task2: 13 * 60 * 60 + 59 * 60, // 13:59 in seconds
+        task3: 6 * 60 * 60 + 59 * 60   // 06:59 in seconds
+    });
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTaskTimes(prevTimes => {
+                const newTimes = {};
+                Object.keys(prevTimes).forEach(task => {
+                    newTimes[task] = prevTimes[task] - 1;
+                    if (newTimes[task] < 0) {
+                        newTimes[task] = 24 * 60 * 60 - 1; // Reset to 24 hours
+                    }
+                });
+                return newTimes;
+            });
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const formatTime = (seconds) => {
+        const hours = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        return `${hours}:${minutes}:${secs}`;
+    };
+
 
     return (
         <div className="hamster-kombat">
@@ -79,17 +112,17 @@ const Hamster = () => {
                     <div className="task">
                         <img src={kalendar} alt="Closed Icon" className="closed-icon" />
                         <p>Vazifalar ro'yxati</p>
-                        <span>18:59</span>
+                        <span>{formatTime(taskTimes.task1)}</span>
                     </div>
                     <div className="task">
                         <img src={sefy} alt="Closed Icon" className="closed-icon" />
                         <p>Kundalik shifr</p>
-                        <span>13:59</span>
+                        <span>{formatTime(taskTimes.task2)}</span>
                     </div>
                     <div className="task">
                         <img src={search} alt="Closed Icon" className="closed-icon" />
                         <p>Kundalik kombinatsiya</p>
-                        <span>06:59</span>
+                        <span>{formatTime(taskTimes.task3)}</span>
                     </div>
                 </div>
                 <div className="balance">
@@ -98,7 +131,7 @@ const Hamster = () => {
                         {balance.toLocaleString()}
                     </h1>
                 </div>
-                <div className="avatar" onClick={handleAvatarClick}>
+                <div className="avatar" onClick={handleAvatarClick} onTouchStart={handleTouch}>
                     <img src={lion} alt="Hamster Avatar" />
                     {numbers.map(number => (
                         <div key={number.id} className="number-overlay">+{number.value}</div>

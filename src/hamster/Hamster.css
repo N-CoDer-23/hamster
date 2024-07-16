@@ -209,61 +209,54 @@ body, html {
     height: 100%;
     background-color: #4caf50;
     border-radius: 5px;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 600px) {
-    .hamster-kombat {
-        max-width: 100%; /* Full width on smaller screens */
-        border: none; /* Remove border on smaller screens */
-    }
-
-    .header {
-        flex-direction: column; /* Stack items vertically */
-        text-align: center;
-    }
-
+}/* Media Queries */
+@media (max-width: 768px) {
     .profile-img {
-        width: 40px; /* Smaller profile image */
-        height: 40px; /* Smaller profile image */
+        width: 40px;
+        height: 40px;
     }
 
-    .tasks-header {
-        flex-direction: column; /* Stack icon and heading vertically */
-        align-items: center;
+    .progress-bar-container {
+        width: 80px;
+        height: 8px;
     }
 
-    .tasks {
-        flex-direction: column; /* Stack tasks vertically */
-        align-items: center; /* Center tasks horizontally */
-        gap: 10px; /* Space between tasks */
+    .closed-icon {
+        width: 20px;
+        height: 20px;
     }
-
+    .tasks{
+        gap: 15px;
+        justify-content: center ;
+    }
+    .task p{
+        font-size: 11px;
+    }
+    .task span{
+        font-size: 10px;
+    }
     .task {
-        width: 80%; /* Full width task boxes */
-        margin-bottom: 10px;
+        padding: 15px;
+        width: 110px;
+        height: 70px;
     }
 
-    .balance {
-        font-size: 14px; /* Smaller balance font size */
+    .balance h1 {
+        font-size: 24px;
+    }
+
+    .balance-icon {
+        width: 18px;
+        height: 18px;
     }
 
     .avatar img {
-        width: 60px; /* Smaller avatar image */
-        height: 60px; /* Smaller avatar image */
+        width: 200px;
+        height: 190px;
     }
 
-    .footer {
-        flex-direction: column; /* Stack items vertically */
-    }
-
-    .footer-item {
-        border-right: none; /* Remove right border */
-        border-bottom: 1px solid #444; /* Add bottom border */
-        width: 100%;
-    }
-
-    .footer-item:last-child {
-        border-bottom: none; /* Remove bottom border from last item */
+    .footer-icon {
+        width: 25px;
+        height: 25px;
     }
 }
